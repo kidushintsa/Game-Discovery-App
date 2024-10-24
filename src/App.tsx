@@ -1,12 +1,13 @@
 // import React from 'react'
+import GameGrid from './Components/gameGrid'
 import NavBar from './Components/NavBar'
 
 const App = () => {
   return (
-    <div className='grid grid-cols-2 bg-slate-600'>
+    <div className='grid grid-cols-2 bg-gray-900	 text-zinc-50	'>
       <NavBar/>
       <div className='bg-lime-500 hidden lg:block'>Side</div>
-      <div className='bg-blue-700 col-span-2 lg:col-span-1'>Main</div>
+      <div className='col-span-2 lg:col-span-1'><GameGrid/></div>
     </div>
   )
 }
