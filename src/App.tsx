@@ -1,5 +1,5 @@
 // import React from 'react'
-import GameGrid from './Components/gameGrid'
+import GameGrid from './Components/GameGrid'
 import NavBar from './Components/NavBar'
 
 const App = () => {
