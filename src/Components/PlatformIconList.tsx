@@ -31,7 +31,7 @@ const PlatformIconList = ({ platforms }: Props) => {
           case "Mac":
             return <FaApple className = "ms-2 text-zinc-400" key={platform.name} />;
           case "Linux":
-            return <FaLinux className = "ms-2" key={platform.name} />;
+            return <FaLinux className = "ms-2 text-zinc-400" key={platform.name} />;
           case "Ios":
             return <MdPhoneIphone className = "ms-2 text-zinc-400" key={platform.name} />;
           case "Android":
