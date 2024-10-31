@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div className='grid grid-cols-3 bg-gray-900 text-zinc-50	'>
       <NavBar/>
-      <div className='bg-lime-500 hidden lg:block'>Side</div>
+      <div className='bg-gray-800 hidden lg:block'>Side</div>
       <div className='col-span-3 lg:col-span-2'><GameGrid/></div>
     </div>
   )
