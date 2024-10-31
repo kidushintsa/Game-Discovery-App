@@ -1,4 +1,5 @@
 import { Games } from "../hooks/useGames";
+import ImageCrop from "../services/ImageCrop";
 import CriticBadge from "./CriticBadge";
 import PlatformIconList from "./PlatformIconList";
 
@@ -9,7 +10,7 @@ interface Props {
 const GameCard = ({ games }: Props) => {
   return (
     <div key={games.id} className="flex flex-col rounded-lg overflow-hidden">
-      <img src={games.background_image} alt={games.name} />
+      <img src={ImageCrop(games.background_image)} alt={games.name} />
       <section
         className="bg-gray-800 h-full flex flex-col
       justify-center"
