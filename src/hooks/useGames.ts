@@ -2,6 +2,7 @@
 import apiClient from "../services/apiClient";
 // import { CanceledError } from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { Genre } from "./useGenres";
 
 export interface Platform {
   id: number;
@@ -22,14 +23,10 @@ export interface Fetching<T> {
 
 // await apiClient.get<FetchingGame>("/games"
 
-const useGames = () => useQuery<Games[], Error>({
-  queryKey: ["games"],
-  queryFn: async () => {
-    const res = await apiClient.get<Fetching<Games>>("/games")
-    console.log(res.data);
-    
-    return res.data.results
-  }
-});
+const useGames = (selectedGenre: Genre | null) => useQuery<Games[], Error>({
+  queryKey: ["games", selectedGenre],
+  queryFn:() => apiClient.get<Fetching<Games>>("/games", {params:{genres: selectedGenre?.id}}).then(res => res.data.results)
+}
+)
 
 export default useGames;
