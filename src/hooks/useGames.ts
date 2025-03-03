@@ -15,9 +15,9 @@ export interface Games {
   parent_platforms: { platform: Platform }[];
   metacritic: number;
 }
-interface FetchingGame {
+export interface Fetching<T> {
   count: number;
-  results: Games[];
+  results: T[];
 }
 
 // await apiClient.get<FetchingGame>("/games"
@@ -25,7 +25,9 @@ interface FetchingGame {
 const useGames = () => useQuery<Games[], Error>({
   queryKey: ["games"],
   queryFn: async () => {
-    const res = await apiClient.get<FetchingGame>("/games")
+    const res = await apiClient.get<Fetching<Games>>("/games")
+    console.log(res.data);
+    
     return res.data.results
   }
 });
