@@ -10,23 +10,20 @@ const GenreList = ({ setSelectedGenre, selectedGenre }: Props) => {
   const { data, isLoading, error } = useGenre();
 
   return (
-    <div className="bg-gray-800 hidden lg:block p-3">
-      <h2 className="font-poppins text-2xl">Genres</h2>
-
-      {error && <h1 className="text-red-500">{error.message}</h1>}
-      {isLoading && <div className="text-gray-400">Loading genres...</div>}
-
-      <React.Fragment>
+      <div className="hidden lg:block p-2">
+        <h2 className="font-poppins text-2xl mb-2">Genres</h2>
+        {error && <h1 className="text-red-500">{error?.message}</h1>}
+        {isLoading && <div className="text-gray-400">Loading genres...</div>}
         {data?.results.map((genre) => (
-          <section className="flex my-3" key={genre.id}>
-            <section className="w-1/4">
+          <section className="grid grid-cols-4 mb-2" key={genre.id}>
+            <section className="">
               <img
                 src={genre.image_background}
                 className="rounded-lg"
                 alt={genre.name}
               />
             </section>
-            <section className="w-3/4 ps-2 font-poppins font-extralight">
+            <section className="ps-2 font-poppins font-extralight col-span-3">
               <button
                 onClick={() => setSelectedGenre(genre)}
                 className={`hover:underline ${selectedGenre?.id === genre.id ? "font-bold" : ""}`}
@@ -36,8 +33,7 @@ const GenreList = ({ setSelectedGenre, selectedGenre }: Props) => {
             </section>
           </section>
         ))}
-      </React.Fragment>
-    </div>
+      </div>
   );
 };
 
