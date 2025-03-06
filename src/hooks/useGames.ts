@@ -23,9 +23,11 @@ export interface Fetching<T> {
 
 // await apiClient.get<FetchingGame>("/games"
 
-const useGames = (selectedGenre: Genre | null) => useQuery<Games[], Error>({
-  queryKey: ["games", selectedGenre],
-  queryFn:() => apiClient.get<Fetching<Games>>("/games", {params:{genres: selectedGenre?.id}}).then(res => res.data.results)
+const useGames = (selectedGenre: Genre | null, selectedPlatform: Platform | null) => useQuery<Games[], Error>({
+  queryKey: ["games", selectedGenre, selectedPlatform],
+  queryFn:() => apiClient.get<Fetching<Games>>("/games", {params:{genres: selectedGenre?.id,
+    platforms:selectedPlatform?.id
+  }}).then(res => res.data.results)
 }
 )
 

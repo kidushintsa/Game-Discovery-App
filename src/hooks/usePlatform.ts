@@ -9,7 +9,7 @@ export interface platform{
 }
 
 const usePlatform = () => useQuery({
-  queryKey:['genre'],
+  queryKey:['platform'],
   queryFn: () => apiClient.get<Fetching<platform>>('/platforms/lists/parents').then(res => res.data)})
 
 

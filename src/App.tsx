@@ -4,6 +4,7 @@ import GameGrid from "./Components/GameGrid";
 import GenreList from "./Components/GenreList";
 import NavBar from "./Components/NavBar";
 import { Genre } from "./hooks/useGenres";
+// import { Platform } from "./hooks/useGames";
 
 
 const App = () => {
