@@ -5,6 +5,7 @@ import GameCard from "./GameCard";
 import PlatformSelector from "./PlatformSelector";
 import { platform } from "../hooks/usePlatform";
 import GameCardSkeleton from "./GameCardSkeleton";
+import SortSelector from "./SortSelector";
 // import PlatformSelector from "./PlatformSelector";
 // import PlatformSelector from "./platformSelector";
 
@@ -19,6 +20,7 @@ const GameGrid = ({ selectedGenre }: { selectedGenre: Genre | null }) => {
     <>
       <div className="col-span-5 lg:col-span-4">
         <PlatformSelector setSelectedPlatform={(p) => setSelectedPlatform(p)} selectedPlatform={selectedPlatform} />
+        <SortSelector/>
         
         {isLoading ? (
           <div className="p-4 grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-4">
