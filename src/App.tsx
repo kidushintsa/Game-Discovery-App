@@ -12,7 +12,7 @@ const App = () => {
   return (
     <div className="bg-gray-900">
     <NavBar/>
-    <div className="grid grid-cols-5 text-zinc-50 my-3">
+    <div className="grid grid-cols-5 text-zinc-50 mt-3">
         <GenreList selectedGenre={selectedGenre}  setSelectedGenre={(genre) => setSelectedGenre(genre)}/>
         <GameGrid selectedGenre={selectedGenre} />
     </div>
