@@ -41,7 +41,7 @@ const GameGrid = ({ selectedGenre, searchText }: { selectedGenre: Genre | null; 
             <h1 className="font-poppins text-4xl text-gray-400">No Games Found</h1>
           </div>
         ) : (
-          <div className="p-4 grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-4 w-full">
+          <div className="p-4 grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-6 w-full">
             {data?.results.map((game) => (
               <GameCard key={game.id} games={game} />
             ))}
