@@ -1,4 +1,3 @@
-import React from 'react'
 import { Genre } from '../hooks/useGenres'
 import { Platform } from '../hooks/useGames'
 interface Props{

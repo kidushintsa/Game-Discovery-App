@@ -1,6 +1,6 @@
 // import React from 'react'
 import logo from "../assets/glogo.jpg"
-import SearchInput, { Props } from "./searchInput"
+import SearchInput, { Props } from "./SearchInput"
 const NavBar = ({ onSearch }: Props) => {
   return (
     <nav className="flex">
