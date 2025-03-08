@@ -1,6 +1,4 @@
-// import { useEffect, useState } from "react";
 import apiClient from "../services/apiClient";
-// import { CanceledError } from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { Genre } from "./useGenres";
 
@@ -9,6 +7,7 @@ export interface Platform {
   name: string;
   slug: string;
 }
+
 export interface Games {
   id: number;
   name: string;
@@ -16,19 +15,27 @@ export interface Games {
   parent_platforms: { platform: Platform }[];
   metacritic: number;
 }
+
 export interface Fetching<T> {
   count: number;
   results: T[];
 }
 
-// await apiClient.get<FetchingGame>("/games"
-
-const useGames = (selectedGenre: Genre | null, selectedPlatform: Platform | null) => useQuery<Games[], Error>({
-  queryKey: ["games", selectedGenre, selectedPlatform],
-  queryFn:() => apiClient.get<Fetching<Games>>("/games", {params:{genres: selectedGenre?.id,
-    platforms:selectedPlatform?.id
-  }}).then(res => res.data.results)
-}
-)
+// ✅ Updated Hook with search support
+const useGames = (selectedGenre: Genre | null, selectedPlatform: Platform | null, searchText: string) => 
+  useQuery<Fetching<Games>, Error>({
+    queryKey: ["games", selectedGenre, selectedPlatform, searchText],
+    queryFn: () => 
+      apiClient
+        .get<Fetching<Games>>("/games", {
+          params: {
+            genres: selectedGenre?.id,
+            platforms: selectedPlatform?.id,
+            search: searchText, 
+          },
+        })
+        .then((res) => res.data),
+    staleTime: 60 * 1000,  // ✅ Cache data for 1 minute
+  });
 
 export default useGames;

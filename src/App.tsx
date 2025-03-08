@@ -9,13 +9,14 @@ import { Genre } from "./hooks/useGenres";
 
 const App = () => {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [searchText, setSearchText] = useState("")
   return (
     <div className="bg-gray-900">
-    <NavBar/>
-    <div className="grid grid-cols-5 text-zinc-50 mt-3">
+    <NavBar onSearch={(text) => setSearchText(text)} />
+<div className="grid grid-cols-5 text-zinc-50 mt-3">
         <GenreList selectedGenre={selectedGenre}  setSelectedGenre={(genre) => setSelectedGenre(genre)}/>
-        <GameGrid selectedGenre={selectedGenre} />
-    </div>
+        <GameGrid selectedGenre={selectedGenre} searchText={searchText} />
+        </div>
     </div>
   );
 };

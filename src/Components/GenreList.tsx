@@ -11,7 +11,7 @@ const GenreList = ({ setSelectedGenre, selectedGenre }: Props) => {
 
   return (
       <div className="hidden lg:block p-2">
-        <h2 className="font-poppins text-2xl mb-2">Genres</h2>
+        <h2 className="font-poppins text-2xl mb-2 font-semibold">Genres</h2>
         {error && <h1 className="text-red-500">{error?.message}</h1>}
         {isLoading && <div className="text-gray-400">Loading genres...</div>}
         {data?.results.map((genre) => (
@@ -19,7 +19,7 @@ const GenreList = ({ setSelectedGenre, selectedGenre }: Props) => {
             <section className="">
               <img
                 src={genre.image_background}
-                className="rounded-lg"
+                className="rounded-lg object-cover"
                 alt={genre.name}
               />
             </section>
