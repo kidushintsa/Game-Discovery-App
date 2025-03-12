@@ -1,16 +1,17 @@
-import { useState } from "react";
-import useGames from "../hooks/useGames";
-import { Genre } from "../hooks/useGenres";
+import useGames, { Platform } from "../hooks/useGames";
 import GameCard from "./GameCard";
 import PlatformSelector from "./PlatformSelector";
-import { platform } from "../hooks/usePlatform";
 import GameCardSkeleton from "./GameCardSkeleton";
 import SortSelector from "./SortSelector";
 import GameHeading from "./GameHeading";
-
-const GameGrid = ({ selectedGenre, searchText }: { selectedGenre: Genre | null; searchText: string }) => {
-  const [selectedPlatform, setSelectedPlatform] = useState<platform | null>(null);
-  const { data, error, isLoading } = useGames(selectedGenre, selectedPlatform, searchText);
+import { QueryParams } from "../App";
+interface Props{
+  setSelectedPlatform:(p:Platform) => void,
+  queryParams: QueryParams
+}
+const GameGrid = ({setSelectedPlatform,queryParams}:Props) => {
+  const {selectedGenre, selectedPlatform} = queryParams
+  const { data, error, isLoading } = useGames(queryParams);
   const skeleton = [1, 2, 3, 4, 5, 6];
   const showGames = !isLoading && !error && (data?.results?.length ?? 0) > 0;
   const noGames = !isLoading && !error && (data?.results?.length ?? 0) === 0;

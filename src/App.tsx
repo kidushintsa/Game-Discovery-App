@@ -4,22 +4,60 @@ import GameGrid from "./Components/GameGrid";
 import GenreList from "./Components/GenreList";
 import NavBar from "./Components/NavBar";
 import { Genre } from "./hooks/useGenres";
-// import { Platform } from "./hooks/useGames";
-
+import { Platform } from "./hooks/useGames";
+export interface QueryParams {
+  selectedGenre: Genre | null;
+  selectedPlatform: Platform | null;
+  searchText: string;
+}
 
 const App = () => {
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  const [searchText, setSearchText] = useState("")
+  const [queryParams, setQueryParams] = useState<QueryParams>({
+    selectedGenre: null,
+    selectedPlatform: null,
+    searchText: "",
+  });
   return (
     <div className="bg-gray-900">
-    <NavBar onSearch={(text) => setSearchText(text)} />
-<div className="grid grid-cols-5 text-zinc-50 mt-3">
-        <GenreList selectedGenre={selectedGenre}  setSelectedGenre={(genre) => setSelectedGenre(genre)}/>
-        <GameGrid selectedGenre={selectedGenre} searchText={searchText} />
-        </div>
+      <NavBar
+        onSearch={(text) =>
+          setQueryParams((prev) => ({
+            ...(prev || {
+              selectedGenre: null,
+              selectedPlatform: null,
+              searchText: "",
+            }),
+            searchText: text,
+          }))
+        }
+      />
+      <div className="grid grid-cols-5 text-zinc-50 mt-3">
+        <GenreList
+          selectedGenre={queryParams.selectedGenre}
+          setSelectedGenre={(genre) =>
+            setQueryParams((prev) => ({
+              ...(prev || {
+                selectedGenre: null,
+                selectedPlatform: null,
+                searchText: "",
+              }),
+              selectedGenre: genre,
+            }))
+          }
+        />
+
+        <GameGrid
+          queryParams={queryParams}
+          setSelectedPlatform={(platform: Platform) =>
+            setQueryParams((prev) => ({
+              ...prev,
+              selectedPlatform: platform,
+            }))
+          }
+        />
+      </div>
     </div>
   );
 };
-
 export default App;
 // bg-gray-800 hidden lg:block
