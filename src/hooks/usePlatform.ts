@@ -1,16 +1,16 @@
 import { useQuery } from "@tanstack/react-query"
-import apiClient from "../services/apiClient"
-import { Fetching } from "./useGames"
+import APIClient from "../services/apiClient"
 
 export interface platform{
   id:number,
   name:string,
   slug:string
 }
+const apiClient = new APIClient<platform>('/platforms/lists/parents')
 
 const usePlatform = () => useQuery({
   queryKey:['platform'],
-  queryFn: () => apiClient.get<Fetching<platform>>('/platforms/lists/parents').then(res => res.data)})
+  queryFn: () => apiClient.getAll({})})
 
 
 export default usePlatform

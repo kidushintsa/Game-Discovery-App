@@ -22,11 +22,7 @@ const App = () => {
       <NavBar
         onSearch={(text) =>
           setQueryParams((prev) => ({
-            ...(prev || {
-              selectedGenre: null,
-              selectedPlatform: null,
-              searchText: "",
-            }),
+            ...(prev),
             searchText: text,
           }))
         }

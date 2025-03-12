@@ -1,6 +1,6 @@
-import apiClient from "../services/apiClient";
 import { useQuery } from "@tanstack/react-query";
 import { QueryParams } from "../App";
+import APIClient from "../services/apiClient";
 
 export interface Platform {
   id: number;
@@ -20,20 +20,20 @@ export interface Fetching<T> {
   count: number;
   results: T[];
 }
-
+const apiClient = new APIClient<Games>("/games")
 const useGames = (queryParams:QueryParams) => 
   useQuery({
     queryKey: ["games", queryParams],
     queryFn: () => 
       apiClient
-        .get<Fetching<Games>>("/games", {
+        .getAll({
           params: {
             genres: queryParams.selectedGenre?.id,
             platforms: queryParams.selectedPlatform?.id,
             search: queryParams.searchText, 
           },
         })
-        .then((res) => res.data),
+        ,
     staleTime: 60 * 1000,  
   });
 

@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import apiClient from "../services/apiClient"
-import { Fetching } from "./useGames"
+import APIClient from "../services/apiClient"
 
 export interface Genre{
   id:number,
@@ -8,10 +7,11 @@ export interface Genre{
   image_background: string
 }
 
-apiClient.get<Fetching<Genre>>('/genres').then(res => res.data)
+const apiClient = new APIClient<Genre>("/genres")
+
 
 const useGenre = () => useQuery({
   queryKey:['genre'],
-  queryFn: () => apiClient.get<Fetching<Genre>>('/genres').then(res => res.data)})
+  queryFn: () => apiClient.getAll({})})
 
 export default useGenre
