@@ -1,37 +1,28 @@
-import useGames, { Platform } from "../hooks/useGames";
+import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import PlatformSelector from "./PlatformSelector";
 import GameCardSkeleton from "./GameCardSkeleton";
 import SortSelector from "./SortSelector";
 import GameHeading from "./GameHeading";
-import { QueryParams } from "../App";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ClipLoader } from "react-spinners";
 
-interface Props {
-  setSelectedPlatform: (p: Platform) => void;
-  queryParams: QueryParams;
-}
 
-const GameGrid = ({ setSelectedPlatform, queryParams }: Props) => {
-  const { selectedGenre, selectedPlatform } = queryParams;
-  const { data, error, isLoading, fetchNextPage, hasNextPage } = useGames(queryParams);
+
+const GameGrid = () => {
+  const { data, error, isLoading, fetchNextPage, hasNextPage } = useGames();
   const skeleton = [1, 2, 3, 4, 5, 6];
   const showGames = !isLoading && !error && (data?.pages?.length ?? 0) > 0;
   const noGames = !isLoading && !error && (data?.pages?.length ?? 0) === 0;
 
   return (
     <div className="col-span-5 lg:col-span-4 flex flex-col min-h-screen bg-gray-900">
-      <GameHeading selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} />
-
-      {/* Filters (Platform & Sorting) */}
+      <GameHeading/>
       <div className="flex flex-wrap gap-4 items-center mb-4">
-        <PlatformSelector setSelectedPlatform={setSelectedPlatform} selectedPlatform={selectedPlatform} />
+        <PlatformSelector/>
         <SortSelector />
       </div>
-
-      {/* Main Content */}
       <div className="flex-1 flex w-full">
         {isLoading && (
           <div className="p-4 grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-4 w-full">

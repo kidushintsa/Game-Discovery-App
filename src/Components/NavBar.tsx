@@ -1,7 +1,7 @@
 // import React from 'react'
 import logo from "../assets/glogo.jpg"
-import SearchInput, { Props } from "./SearchInput"
-const NavBar = ({ onSearch }: Props) => {
+import SearchInput from "./SearchInput"
+const NavBar = () => {
   return (
     <nav className="flex">
       <div className="flex p-2">
@@ -10,7 +10,7 @@ const NavBar = ({ onSearch }: Props) => {
           Game Hub
         </h5>
       </div>
-      <SearchInput onSearch={onSearch} />
+      <SearchInput/>
     </nav>
   );
 };

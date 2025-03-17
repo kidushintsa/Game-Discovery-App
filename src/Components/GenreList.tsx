@@ -1,12 +1,12 @@
-import useGenre, { Genre } from "../hooks/useGenres";
+import useGenre from "../hooks/useGenres";
+import useQueryStore from "../State-management/useQueryStore";
 
-interface Props {
-  setSelectedGenre: (g: Genre) => void;
-  selectedGenre: Genre | null;
-}
+// import { shallow } from 'zustand/shallow';
 
-const GenreList = ({ setSelectedGenre, selectedGenre }: Props) => {
+
+const GenreList = () => {
   const { data, isLoading, error } = useGenre();
+  const {setGenre, gameQuery:{selectedGenre}} = useQueryStore();
 
   return (
       <div className="hidden lg:block p-2">
@@ -24,7 +24,7 @@ const GenreList = ({ setSelectedGenre, selectedGenre }: Props) => {
             </section>
             <section className="ps-2 font-poppins font-extralight col-span-3">
               <button
-                onClick={() => setSelectedGenre(genre)}
+                onClick={() => setGenre(genre)}
                 className={`hover:underline ${selectedGenre?.id === genre.id ? "font-bold" : ""}`}
               >
                 {genre.name}

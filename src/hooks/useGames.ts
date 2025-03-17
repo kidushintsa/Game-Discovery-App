@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { QueryParams } from "../App";
 import APIClient from "../services/apiClient";
+import useQueryStore from "../State-management/useQueryStore";
 
 export interface Platform {
   id: number;
@@ -24,14 +24,16 @@ export interface Fetching<T> {
 
 const apiClient = new APIClient<Games>("/games");
 
-const useGames = (queryParams: QueryParams) => 
-  useInfiniteQuery<Fetching<Games>, Error>({
-    queryKey: ["games", queryParams],  // Ensure queryParams is serializable
+const useGames = () => {
+  const  {gameQuery:{searchText,selectedGenre,selectedPlatform,sortBy}} =  useQueryStore();
+  return useInfiniteQuery<Fetching<Games>, Error>({
+    queryKey: ["games", searchText, selectedGenre?.id,selectedPlatform?.id,sortBy],  // Ensure queryParams is serializable
     queryFn:  ({ pageParam }) => apiClient.getAll({
         params: {
-          genres: queryParams.selectedGenre?.id,
-          platforms: queryParams.selectedPlatform?.id,
-          search: queryParams.searchText,
+          genres: selectedGenre?.id,
+          platforms: selectedPlatform?.id,
+          search: searchText,
+          ordering: sortBy,
           page: pageParam,
         },
       })     
@@ -39,5 +41,6 @@ const useGames = (queryParams: QueryParams) =>
     initialPageParam: 1, 
     getNextPageParam: (lastPage, allPages) => lastPage.next ? allPages.length + 1 : undefined,
   });
+}
 
 export default useGames;
