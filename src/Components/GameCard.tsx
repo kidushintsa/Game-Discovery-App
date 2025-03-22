@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Games } from "../hooks/useGames";
 import ImageCrop from "../services/ImageCrop";
 import CriticBadge from "./CriticBadge";
@@ -12,7 +13,7 @@ const GameCard = ({ games }: Props) => {
   return (
     <div
       key={games.id}
-      className="flex flex-col rounded-lg overflow-hidden max-h-fit"
+      className="flex flex-col rounded-lg overflow-hidden max-h-fit hover:scale-[1.1] transition delay-150 duration-150 ease-in"
     >
       <img
         className="w-full object-cover"
@@ -29,7 +30,7 @@ const GameCard = ({ games }: Props) => {
           />
           <CriticBadge score={games.metacritic} />
         </header>
-        <h1 className="font-bold font-sans ms-2 p-3">{games.name}</h1>
+        <Link to={"/game/" + games.slug} className="font-bold font-sans ms-2 p-3">{games.name}</Link>
       </section>
     </div>
   );

@@ -14,6 +14,8 @@ export interface Games {
   background_image: string;
   parent_platforms: { platform: Platform }[];
   metacritic: number;
+  slug: string;
+  description_raw: string
 }
 
 export interface Fetching<T> {

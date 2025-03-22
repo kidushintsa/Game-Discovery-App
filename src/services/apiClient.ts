@@ -17,6 +17,9 @@ class APIClient<T>{
   getAll = (config:AxiosRequestConfig) => {
     return axiosInstance.get<Fetching<T>>(this.endPoints, config).then(res => res.data)
   }
+
+  get = (slug: string) => {
+    return axiosInstance.get<T>(`${this.endPoints}/${slug}`).then(res => res.data)  }
 }
 
 export default APIClient;
