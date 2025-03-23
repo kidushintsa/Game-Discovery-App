@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import APIClient from "../services/apiClient";
 import useQueryStore from "../State-management/useQueryStore";
-import { Games } from "../entities/Games";
+import  Games  from "../entities/Games";
 
 export interface Fetching<T> {
   count: number;

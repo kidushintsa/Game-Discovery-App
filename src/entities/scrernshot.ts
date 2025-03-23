@@ -1,4 +1,4 @@
-export interface screenshoot{
+export default interface screenshoot{
   id: number;
   image: string;
   height: number;
