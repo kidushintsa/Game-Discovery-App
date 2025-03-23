@@ -3,6 +3,7 @@ import Games  from "../entities/Games";
 import ImageCrop from "../services/ImageCrop";
 import CriticBadge from "./CriticBadge";
 import PlatformIconList from "./PlatformIconList";
+import { motion } from 'framer-motion';
 interface Props {
   games: Games;
 }
@@ -10,7 +11,10 @@ interface Props {
 const GameCard = ({ games }: Props) => {
   
   return (
-    <div
+    <motion.div  initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}>
+      <Link to={"/game/" + games.slug}
       key={games.id}
       className="flex flex-col rounded-lg overflow-hidden max-h-fit hover:scale-[1.1] transition delay-15 duration-15 ease-in"
 
@@ -32,7 +36,8 @@ const GameCard = ({ games }: Props) => {
         </header>
         <Link to={"/game/" + games.slug} className="font-bold font-sans ms-2 p-3">{games.name}</Link>
       </section>
-    </div>
+    </Link>
+    </motion.div>
   );
 };
 
