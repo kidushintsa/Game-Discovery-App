@@ -18,13 +18,13 @@ const GameDetail = () => {
   const displayedText = !expanded && isLong ? gameDes.slice(0, 250) + "..." : gameDes;
 
   return (
-   <>
-    <div className="ms-4 mt-2 font-poppins text-white">
-      
+   <div className="px-4 mb-2 font-poppins text-white grid md:grid-cols-2 gap-2">
+     <div className="flex-row">
+     <div>     
       <h1 className="text-3xl font-semibold">
         {game.name}
       </h1>
-      <p className="mt-2 pe-3">
+      <p className="mt-2">
         {displayedText}
         {isLong && (
           <button
@@ -35,11 +35,14 @@ const GameDetail = () => {
           </button>
         )}
       </p>
-      <GameAttribute game={game}/>
     </div>
+    <GameAttribute game={game}/>
+     </div>
+    <div className="flex-row">
     <Trailer gameId={game.id}/>
     <ScreenShoots gameId={game.id}/>
-    </>
+    </div>
+    </div>
 
   )
 };
