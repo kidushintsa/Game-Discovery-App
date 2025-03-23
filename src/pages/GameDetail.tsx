@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import useGame from "../hooks/useGame";
 import { useState } from "react";
+import GameAttribute from "../Components/GameAttribute";
 
 const GameDetail = () => {
   const { slug } = useParams();
@@ -11,15 +12,15 @@ const GameDetail = () => {
   if (error || !game) throw error?.message;
 
   const gameDes = game.description_raw || "";
-  const isLong = gameDes.length > 80;
-  const displayedText = !expanded && isLong ? gameDes.slice(0, 80) + "..." : gameDes;
+  const isLong = gameDes.length > 150;
+  const displayedText = !expanded && isLong ? gameDes.slice(0, 150) + "..." : gameDes;
 
   return (
-    <>
-      <h1 className="font-poppins text-white text-3xl ms-4 mt-2 font-semibold">
+    <div className="ms-4 mt-2 font-poppins text-white">
+      <h1 className="text-3xl font-semibold">
         {game.name}
       </h1>
-      <p className="font-poppins text-white">
+      <p className="mt-2 w-2/3">
         {displayedText}
         {isLong && (
           <button
@@ -30,8 +31,9 @@ const GameDetail = () => {
           </button>
         )}
       </p>
-    </>
-  );
+      <GameAttribute game={game}/>
+    </div>
+  )
 };
 
 export default GameDetail;

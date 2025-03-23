@@ -8,8 +8,6 @@ import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ClipLoader } from "react-spinners";
 
-
-
 const GameGrid = () => {
   const { data, error, isLoading, fetchNextPage, hasNextPage } = useGames();
   const skeleton = [1, 2, 3, 4, 5, 6];
@@ -61,7 +59,7 @@ const GameGrid = () => {
               {data?.pages.map((page, index) => (
                 <React.Fragment key={index}>
                   {page.results.map((game) => (
-                    <GameCard key={game.id} games={game} />
+                    <GameCard key={game.id} games={game}/>
                   ))}
                 </React.Fragment>
               ))}

@@ -3,17 +3,17 @@ import { Games } from "../entities/Games";
 import ImageCrop from "../services/ImageCrop";
 import CriticBadge from "./CriticBadge";
 import PlatformIconList from "./PlatformIconList";
-// import Skeleton from 'react-loading-skeleton'
-// import 'react-loading-skeleton/dist/skeleton.css'
 interface Props {
   games: Games;
 }
 
 const GameCard = ({ games }: Props) => {
+  
   return (
     <div
       key={games.id}
-      className="flex flex-col rounded-lg overflow-hidden max-h-fit hover:scale-[1.1] transition delay-150 duration-150 ease-in"
+      className="flex flex-col rounded-lg overflow-hidden max-h-fit hover:scale-[1.1] transition delay-15 duration-15 ease-in"
+
     >
       <img
         className="w-full object-cover"
