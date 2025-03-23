@@ -7,7 +7,7 @@ const useTrailer = (gameId: number) => {
   const apiClient = new APIClient<Trailer>(`/games/${gameId}/movies`);
   return useQuery({
   queryKey:["querykey", gameId],
-  queryFn: apiClient.getTrailer
+  queryFn: apiClient.getDetail
 })}
 
 export default useTrailer

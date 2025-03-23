@@ -20,7 +20,7 @@ class APIClient<T>{
 
   get = (id: string | number) => {
     return axiosInstance.get<T>(`${this.endPoints}/${id}`).then(res => res.data)  }
-  getTrailer = () => axiosInstance.get<Fetching<T>>(`${this.endPoints}`).then(res => res.data)  
+  getDetail = () => axiosInstance.get<Fetching<T>>(`${this.endPoints}`).then(res => res.data)  
 }
 
 export default APIClient;

@@ -9,7 +9,7 @@ const Trailer = ({gameId}:Props ) => {
   const first =data?.results[0]
   
   return (
-    first ? <video src={first.data[480]} controls className=''></video>: null
+    first ? <video src={first.data[480]} controls className='w-full'></video>: null
   )
 }
 

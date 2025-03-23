@@ -3,6 +3,7 @@ import useGame from "../hooks/useGame";
 import { useState } from "react";
 import GameAttribute from "../Components/GameAttribute";
 import Trailer from "../Components/Trailer";
+import ScreenShoots from "../Components/ScreenShoots";
 
 const GameDetail = () => {
   const { slug } = useParams();
@@ -37,6 +38,7 @@ const GameDetail = () => {
       <GameAttribute game={game}/>
     </div>
     <Trailer gameId={game.id}/>
+    <ScreenShoots gameId={game.id}/>
     </>
 
   )
