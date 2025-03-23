@@ -7,7 +7,7 @@ interface Props{
 }
 const GameAttribute = ({game}:Props) => {
   return (
-    <div className="mt-4 grid grid-cols-2 w-1/2 gap-y-3">
+    <div className="my-4 grid grid-cols-2 md:w-1/2 gap-y-3">
       <DefinationItem term="Platform">
       {game.parent_platforms.map(({platform}) => (<p key={platform.name}>{platform.name}</p>))}
       </DefinationItem>
