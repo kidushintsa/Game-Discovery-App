@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import { Genre } from "../hooks/useGenres";
-import { Platform } from "../hooks/useGames";
+import { Genre } from "../entities/Genre";
+import { Platform } from "../entities/Platform";
 
 export interface QueryParams {
   selectedGenre?: Genre | null;

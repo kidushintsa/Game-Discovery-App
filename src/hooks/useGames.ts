@@ -1,22 +1,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import APIClient from "../services/apiClient";
 import useQueryStore from "../State-management/useQueryStore";
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
-
-export interface Games {
-  id: number;
-  name: string;
-  background_image: string;
-  parent_platforms: { platform: Platform }[];
-  metacritic: number;
-  slug: string;
-  description_raw: string
-}
+import { Games } from "../entities/Games";
 
 export interface Fetching<T> {
   count: number;
