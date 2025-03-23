@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Games } from "../entities/Games";
+import Games  from "../entities/Games";
 import ImageCrop from "../services/ImageCrop";
 import CriticBadge from "./CriticBadge";
 import PlatformIconList from "./PlatformIconList";

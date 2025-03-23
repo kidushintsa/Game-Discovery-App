@@ -1,7 +1,6 @@
-import React from 'react'
 import DefinationItem from './DefinationItem'
 import CriticBadge from './CriticBadge'
-import { Games } from '../entities/Games'
+import Games  from '../entities/Games'
 interface Props{
   game:Games
 }
