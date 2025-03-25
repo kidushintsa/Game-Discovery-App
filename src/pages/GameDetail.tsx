@@ -4,13 +4,19 @@ import { useState } from "react";
 import GameAttribute from "../Components/GameAttribute";
 import Trailer from "../Components/Trailer";
 import ScreenShoots from "../Components/ScreenShoots";
+import { ClipLoader } from "react-spinners";
 
 const GameDetail = () => {
   const { slug } = useParams();
   const { data: game, isLoading, error } = useGame(slug!);
   const [expanded, setExpanded] = useState(false);
 
-  if (isLoading) return "Loading...";
+  if (isLoading) return <div className='grid place-items-center'><ClipLoader
+  size={40}
+  color="#ffffff"
+  aria-label="Loading Spinner"
+  data-testid="loader"
+/></div>;
   if (error || !game) throw error?.message;
 
   const gameDes = game.description_raw || "";
