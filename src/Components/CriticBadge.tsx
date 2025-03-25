@@ -3,14 +3,14 @@ interface Badge {
 }
 
 const CriticBadge = ({ score }: Badge) => {
-  let color = '';
-  
+  let color = "";
+
   if (score > 75) {
-    color = 'text-green-400'; // Green for score > 75
+    color = "text-green-400"; // Green for score > 75
   } else if (score > 60) {
-    color = 'text-red-400'; // Red for score between 60 and 75
+    color = "text-red-400"; // Red for score between 60 and 75
   } else {
-    color = 'text-gray-500'; // Default color if score is below 60
+    color = "text-gray-500"; // Default color if score is below 60
   }
 
   return (

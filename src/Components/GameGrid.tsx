@@ -16,9 +16,9 @@ const GameGrid = () => {
 
   return (
     <div className="col-span-5 lg:col-span-4 flex flex-col min-h-screen bg-gray-900">
-      <GameHeading/>
+      <GameHeading />
       <div className="flex flex-wrap gap-4 items-center mb-4">
-        <PlatformSelector/>
+        <PlatformSelector />
         <SortSelector />
       </div>
       <div className="flex-1 flex w-full">
@@ -30,17 +30,24 @@ const GameGrid = () => {
           </div>
         )}
 
-        {error && <h1 className="text-red-500 text-center w-full">{error.message}</h1>}
+        {error && (
+          <h1 className="text-red-500 text-center w-full">{error.message}</h1>
+        )}
 
         {noGames && (
           <div className="flex-1 flex items-center justify-center">
-            <h1 className="font-poppins text-4xl text-gray-400">No Games Found</h1>
+            <h1 className="font-poppins text-4xl text-gray-400">
+              No Games Found
+            </h1>
           </div>
         )}
 
         {showGames && (
           <InfiniteScroll
-            dataLength={data?.pages.reduce((acc, page) => acc + page.results.length, 0) || 0} // Current length of items
+            dataLength={
+              data?.pages.reduce((acc, page) => acc + page.results.length, 0) ||
+              0
+            } // Current length of items
             next={fetchNextPage} // Function to load more items
             hasMore={hasNextPage} // Boolean to determine if more items are available
             loader={
@@ -59,7 +66,7 @@ const GameGrid = () => {
               {data?.pages.map((page, index) => (
                 <React.Fragment key={index}>
                   {page.results.map((game) => (
-                    <GameCard key={game.id} games={game}/>
+                    <GameCard key={game.id} games={game} />
                   ))}
                 </React.Fragment>
               ))}

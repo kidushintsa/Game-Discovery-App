@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import APIClient from "../services/apiClient";
 import useQueryStore from "../State-management/useQueryStore";
-import  Games  from "../entities/Games";
+import Games from "../entities/Games";
 
 export interface Fetching<T> {
   count: number;
@@ -12,10 +12,19 @@ export interface Fetching<T> {
 const apiClient = new APIClient<Games>("/games");
 
 const useGames = () => {
-  const  {gameQuery:{searchText,selectedGenre,selectedPlatform,sortBy}} =  useQueryStore();
+  const {
+    gameQuery: { searchText, selectedGenre, selectedPlatform, sortBy },
+  } = useQueryStore();
   return useInfiniteQuery<Fetching<Games>, Error>({
-    queryKey: ["games", searchText, selectedGenre?.id,selectedPlatform?.id,sortBy],  // Ensure queryParams is serializable
-    queryFn:  ({ pageParam }) => apiClient.getAll({
+    queryKey: [
+      "games",
+      searchText,
+      selectedGenre?.id,
+      selectedPlatform?.id,
+      sortBy,
+    ], // Ensure queryParams is serializable
+    queryFn: ({ pageParam }) =>
+      apiClient.getAll({
         params: {
           genres: selectedGenre?.id,
           platforms: selectedPlatform?.id,
@@ -23,11 +32,11 @@ const useGames = () => {
           ordering: sortBy,
           page: pageParam,
         },
-      })     
-    ,
-    initialPageParam: 1, 
-    getNextPageParam: (lastPage, allPages) => lastPage.next ? allPages.length + 1 : undefined,
+      }),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages) =>
+      lastPage.next ? allPages.length + 1 : undefined,
   });
-}
+};
 
 export default useGames;

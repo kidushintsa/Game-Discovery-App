@@ -1,6 +1,6 @@
-export default interface Trailer{
+export default interface Trailer {
   id: number | string;
   name: string;
-  preview: string
-  data: {480: string, max:string};
+  preview: string;
+  data: { 480: string; max: string };
 }

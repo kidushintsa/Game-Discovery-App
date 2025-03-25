@@ -21,23 +21,47 @@ const PlatformIconList = ({ platforms }: Props) => {
       {platforms.map((platform) => {
         switch (platform.name) {
           case "PC":
-            return <FaWindows className = "ms-2 text-zinc-400" key={platform.name} />;
+            return (
+              <FaWindows className="ms-2 text-zinc-400" key={platform.name} />
+            );
           case "Playstation":
-            return <FaPlaystation className = "ms-2 text-zinc-400" key={platform.name} />;
+            return (
+              <FaPlaystation
+                className="ms-2 text-zinc-400"
+                key={platform.name}
+              />
+            );
           case "Xbox":
-            return <FaXbox className = "ms-2 text-zinc-400" key={platform.name} />;
+            return (
+              <FaXbox className="ms-2 text-zinc-400" key={platform.name} />
+            );
           case "Nintendo":
-            return <SiNintendo className = "ms-2 text-zinc-400" key={platform.name} />;
+            return (
+              <SiNintendo className="ms-2 text-zinc-400" key={platform.name} />
+            );
           case "Mac":
-            return <FaApple className = "ms-2 text-zinc-400" key={platform.name} />;
+            return (
+              <FaApple className="ms-2 text-zinc-400" key={platform.name} />
+            );
           case "Linux":
-            return <FaLinux className = "ms-2 text-zinc-400" key={platform.name} />;
+            return (
+              <FaLinux className="ms-2 text-zinc-400" key={platform.name} />
+            );
           case "Ios":
-            return <MdPhoneIphone className = "ms-2 text-zinc-400" key={platform.name} />;
+            return (
+              <MdPhoneIphone
+                className="ms-2 text-zinc-400"
+                key={platform.name}
+              />
+            );
           case "Android":
-            return <FaAndroid className = "ms-2 text-zinc-400" key={platform.name} />;
+            return (
+              <FaAndroid className="ms-2 text-zinc-400" key={platform.name} />
+            );
           case "Web":
-            return <BsGlobe className = "ms-2 text-zinc-400" key={platform.name} />;
+            return (
+              <BsGlobe className="ms-2 text-zinc-400" key={platform.name} />
+            );
         }
       })}
     </div>

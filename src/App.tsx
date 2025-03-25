@@ -3,8 +3,8 @@ import NavBar from "./Components/NavBar";
 const App = () => {
   return (
     <div className="bg-gray-900">
-      <NavBar/>
-      <Outlet/>
+      <NavBar />
+      <Outlet />
     </div>
   );
 };
