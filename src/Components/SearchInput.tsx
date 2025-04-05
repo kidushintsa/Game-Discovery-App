@@ -9,7 +9,7 @@ const SearchInput = () => {
   const setSearchText = useQueryStore((s) => s.setSearchText); //only rerender when the search text is changed
   return (
     <form
-      className=" border-slate-500 rounded-full flex !bg-slate-700 h-1/2 self-center w-1/2 mx-auto px-2"
+      className=" border-slate-500 rounded-full flex !bg-slate-700 h-1/2 self-center w-2/3 lg:w-1/2 mx-auto px-2"
       onSubmit={(e) => {
         e.preventDefault();
         if (ref.current) {
