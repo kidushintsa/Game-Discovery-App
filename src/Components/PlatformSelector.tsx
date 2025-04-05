@@ -9,14 +9,27 @@ const PlatformSelector = () => {
   const { data, error } = usePlatform();
   if (error) return <p className="text-red-500">Error loading platforms</p>;
 
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
+    if (value === "") {
+      setPlatform(null!);
+    } else {
+      setPlatform(JSON.parse(value));
+    }
+  };
+
   return (
     <select
       className="!bg-slate-700 rounded-md mx-4 focus:ring-0 focus:!border-gray-500"
-      onChange={(e) => setPlatform(JSON.parse(e.target.value))}
+      onChange={handleChange}
+      value={selectedPlatform ? JSON.stringify(selectedPlatform) : ""}
     >
-      <option value="">
-        {selectedPlatform ? selectedPlatform.name : "Select a platform"}
+      <option value="" disabled>
+        Select a platform
       </option>
+
+      {selectedPlatform && <option value="">All Platforms</option>}
+
       {data?.results.map((platform) => (
         <option key={platform.id} value={JSON.stringify(platform)}>
           {platform.name}
