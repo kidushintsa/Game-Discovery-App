@@ -15,7 +15,7 @@ const GameGrid = () => {
   const noGames = !isLoading && !error && (data?.pages?.length ?? 0) === 0;
 
   return (
-    <div className="col-span-5 lg:col-span-4 flex flex-col min-h-screen bg-gray-900">
+    <div className="col-span-5 lg:col-span-4 flex flex-col min-h-screen bg-gray-900 mt-16">
       <GameHeading />
       <div className="mb-4 flex justify-around lg:justify-start">
         <PlatformSelector />
