@@ -20,7 +20,7 @@ const SearchInput = () => {
     >
       <BsSearch
         color="white"
-        size={24}
+        size={18}
         style={{ stroke: "white", strokeWidth: 1, alignSelf: "center" }}
       />
       <input
