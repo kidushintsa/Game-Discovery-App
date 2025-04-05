@@ -20,7 +20,7 @@ const GameDetail = () => {
     !expanded && isLong ? gameDes.slice(0, 250) + "..." : gameDes;
 
   return (
-    <div className="px-4 mb-2 font-poppins text-white grid md:grid-cols-2 gap-2">
+    <div className="px-4 mb-2 font-poppins text-white grid md:grid-cols-2 gap-2 mt-16">
       <div className="flex-row">
         <div>
           <h1 className="text-3xl font-semibold">{game.name}</h1>
