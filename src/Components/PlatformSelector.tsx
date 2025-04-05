@@ -20,7 +20,7 @@ const PlatformSelector = () => {
 
   return (
     <select
-      className="!bg-slate-700 rounded-md mx-4 focus:ring-0 focus:!border-gray-500"
+      className="!bg-slate-700 rounded-md focus:ring-0 focus:!border-gray-500 "
       onChange={handleChange}
       value={selectedPlatform ? JSON.stringify(selectedPlatform) : ""}
     >

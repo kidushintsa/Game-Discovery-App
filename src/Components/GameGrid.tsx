@@ -17,7 +17,7 @@ const GameGrid = () => {
   return (
     <div className="col-span-5 lg:col-span-4 flex flex-col min-h-screen bg-gray-900">
       <GameHeading />
-      <div className="flex flex-wrap gap-4 items-center mb-4">
+      <div className="mb-4 flex justify-around lg:justify-start">
         <PlatformSelector />
         <SortSelector />
       </div>
