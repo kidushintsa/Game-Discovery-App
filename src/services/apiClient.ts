@@ -2,9 +2,9 @@ import axios, { AxiosRequestConfig } from "axios";
 import { Fetching } from "../hooks/useGames";
 
 const axiosInstance = axios.create({
-  baseURL: "https://api.rawg.io/api",
+  baseURL: import.meta.env.VITE_MY_BASE_URL,
   params: {
-    key: "21f32819aff9403c86ef8f2d6dd9fbc9",
+    key: import.meta.env.VITE_MY_API_KEY,
   },
 });
 
