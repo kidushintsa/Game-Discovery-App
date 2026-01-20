@@ -1,5 +1,8 @@
 🎮 Game Discovery App
  
+hi dave
+
+
  A React.js web application that helps users explore and discover video games using the RAWG API. Features include game details, screenshots, videos (if available), smooth animations with Framer Motion, and state management with Zustand.
  
  🚀 Features
